@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./site_components/home.js";
 import Register from "./site_components/register.js";
 import Login from "./site_components/login.js";
+import Characterselection from "./site_components/characterselection.js";
 import "./App.css";
 
 export default function App() {
@@ -23,6 +24,9 @@ export default function App() {
           </Link>
         </div>
         <Switch>
+          <Route path="/characterselection">
+            <Characterselection />
+          </Route>
           <Route path="/register">
             <Register />
           </Route>

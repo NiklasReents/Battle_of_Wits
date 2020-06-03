@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+
 const cookies = new Cookies();
 
 export default function Login() {
-  console.log(cookies.get("Mycookie"));
   const handleLoginSubmit = (event) => {
     event.preventDefault();
     const login_username = document.getElementById("login_username").value;
@@ -16,8 +16,8 @@ export default function Login() {
         login_password: login_password,
       })
       .then(function (response) {
-        console.log(response);
         cookies.set("Mycookie", response.data);
+        console.log(cookies.get("Mycookie", response.data));
         //window.location.href = "/home";
       })
       .catch(function (error) {

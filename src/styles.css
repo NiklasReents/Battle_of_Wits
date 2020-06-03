@@ -1,0 +1,11 @@
+.imagecontainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.characterimage {
+  max-width: 100%;
+  height: auto;
+  width: auto\9;
+}
