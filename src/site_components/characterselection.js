@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import styles from "../styles.css";
@@ -53,11 +54,13 @@ export default function Characterselection() {
             />
           </button>
           <button>
-            <img
-              className="characterimage"
-              src={characters[characterIndex].image}
-              alt="character"
-            />
+            <Link className="link" to="/battlescreen">
+              <img
+                className="characterimage"
+                src={characters[characterIndex].image}
+                alt="character"
+              />
+            </Link>
           </button>
           <button>
             <img
