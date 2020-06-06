@@ -7,6 +7,7 @@ const cookies = new Cookies();
 
 export default function Battlescreen() {
   const [characters, setCharacters] = useState([]);
+  let [characterIndex, setCharacterIndex] = useState(0);
 
   useEffect(() => {
     axios
@@ -28,7 +29,9 @@ export default function Battlescreen() {
           <div id="characterone_container">
             <img
               className="characterimage"
-              src={characters[1].image}
+              src={
+                characters[Math.floor(Math.random() * characters.length)].image
+              }
               alt="character"
             />
             <div>
@@ -47,7 +50,7 @@ export default function Battlescreen() {
           <div id="charactertwo_container">
             <img
               className="characterimage"
-              src={characters[2].image}
+              src={characters[characterIndex].image}
               alt="character"
             />
             <div>
