@@ -4,6 +4,7 @@ import Home from "./site_components/home.js";
 import Register from "./site_components/register.js";
 import Login from "./site_components/login.js";
 import Characterselection from "./site_components/characterselection.js";
+import Battlescreen from "./site_components/battlescreen.js";
 import "./App.css";
 
 export default function App() {
@@ -24,6 +25,9 @@ export default function App() {
           </Link>
         </div>
         <Switch>
+          <Route path="/battlescreen">
+            <Battlescreen />
+          </Route>
           <Route path="/characterselection">
             <Characterselection />
           </Route>
