@@ -18,7 +18,7 @@ export default function Login() {
       .then(function (response) {
         cookies.set("Mycookie", response.data);
         console.log(cookies.get("Mycookie", response.data));
-        //window.location.href = "/home";
+        window.location.href = "/home";
       })
       .catch(function (error) {
         console.log(error);

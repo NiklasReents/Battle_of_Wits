@@ -35,19 +35,20 @@ export default function Characterselection() {
         <h4>{characters[characterIndex].name}</h4>
         <p>{characters[characterIndex].description}</p>
         <div className="imagecontainer">
-          <button>
+          <button
+            onClick={() => {
+              let indexOfCharacterLeft = characterIndex;
+              if (indexOfCharacterLeft > 0)
+                setCharacterIndex(indexOfCharacterLeft - 1);
+              else
+                setCharacterIndex(
+                  (indexOfCharacterLeft = characters.length - 1)
+                );
+              console.log(indexOfCharacterLeft);
+              console.log(characters[characterIndex]);
+            }}
+          >
             <img
-              onClick={() => {
-                let indexOfCharacterLeft = characterIndex;
-                if (indexOfCharacterLeft > 0)
-                  setCharacterIndex(indexOfCharacterLeft - 1);
-                else
-                  setCharacterIndex(
-                    (indexOfCharacterLeft = characters.length - 1)
-                  );
-                console.log(indexOfCharacterLeft);
-                console.log(characters[characterIndex]);
-              }}
               className="selectionarrows"
               src="arrow_left.bmp"
               alt="arrow_left"
@@ -62,16 +63,17 @@ export default function Characterselection() {
               />
             </Link>
           </button>
-          <button>
+          <button
+            onClick={() => {
+              let indexOfCharacterRight = characterIndex;
+              if (indexOfCharacterRight < characters.length - 1)
+                setCharacterIndex(indexOfCharacterRight + 1);
+              else setCharacterIndex((indexOfCharacterRight = 0));
+              console.log(indexOfCharacterRight);
+              console.log(characters[characterIndex]);
+            }}
+          >
             <img
-              onClick={() => {
-                let indexOfCharacterRight = characterIndex;
-                if (indexOfCharacterRight < characters.length - 1)
-                  setCharacterIndex(indexOfCharacterRight + 1);
-                else setCharacterIndex((indexOfCharacterRight = 0));
-                console.log(indexOfCharacterRight);
-                console.log(characters[characterIndex]);
-              }}
               className="selectionarrows"
               src="arrow_right.bmp"
               alt="arrow_right"
