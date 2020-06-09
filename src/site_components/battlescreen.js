@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import styles from "../styles.css";
@@ -7,7 +8,9 @@ const cookies = new Cookies();
 
 export default function Battlescreen() {
   const [characters, setCharacters] = useState([]);
-  let [characterIndex, setCharacterIndex] = useState(0);
+  const [characterIndex, setCharacterIndex] = useState(0);
+  let location = useLocation();
+  let { playerCharacter } = location.state;
 
   useEffect(() => {
     axios
@@ -15,7 +18,7 @@ export default function Battlescreen() {
         headers: { Authorization: cookies.get("Mycookie") },
       })
       .then((response) => {
-        console.log(response);
+        //console.log(response);
         setCharacters(response.data);
       })
       .catch((error) => {
@@ -65,7 +68,7 @@ export default function Battlescreen() {
         <div id="charactertwo_container">
           <img
             className="characterimage"
-            src={characters[characterIndex].image}
+            src={playerCharacter.image}
             alt="character"
           />
           <div>
@@ -73,10 +76,10 @@ export default function Battlescreen() {
               <tbody>
                 <tr>
                   <td>
-                    <h2>HP: {characters[0].hit_points}</h2>
+                    <h2>HP: {playerCharacter.hit_points}</h2>
                   </td>
                   <td>
-                    <h2>AP: {characters[0].action_points}</h2>
+                    <h2>AP: {playerCharacter.action_points}</h2>
                   </td>
                 </tr>
               </tbody>
@@ -88,12 +91,38 @@ export default function Battlescreen() {
             <tbody>
               <tr>
                 <td>
-                  <button>
+                  <button
+                  /*onClick={() => {
+                      setCharacters(
+                        (characters[0].hit_points =
+                          characters[0].hit_points - 150),
+                        setCharacters(
+                          (characters[0].action_points =
+                            characters[0].action_points - 2)
+                        )
+                      );
+                      //console.log(characters[0].hit_points);
+                      //console.log(characters[0].action_points);
+                    }}*/
+                  >
                     <h2>Attack</h2>
                   </button>
                 </td>
                 <td>
-                  <button>
+                  <button
+                  /*onClick={() => {
+                      setCharacters(
+                        (characters[0].hit_points =
+                          characters[0].hit_points + 250),
+                        setCharacters(
+                          (characters[0].action_points =
+                            characters[0].action_points - 3)
+                        )
+                      );
+                      //console.log(characters[0].hit_points);
+                      //console.log(characters[0].action_points);
+                    }}*/
+                  >
                     <h2>Heal</h2>
                   </button>
                 </td>

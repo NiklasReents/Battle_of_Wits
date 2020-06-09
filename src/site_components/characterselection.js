@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect,
+} from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import styles from "../styles.css";
@@ -8,7 +14,21 @@ const cookies = new Cookies();
 
 export default function Characterselection() {
   const [characters, setCharacters] = useState([]);
-  let [characterIndex, setCharacterIndex] = useState(0);
+  const [characterIndex, setCharacterIndex] = useState(0);
+  const [redirect, setRedirect] = useState(false);
+
+  function renderRedirect() {
+    if (redirect) {
+      return (
+        <Redirect
+          to={{
+            pathname: "/battlescreen",
+            state: { playerCharacter: characters[characterIndex] },
+          }}
+        />
+      );
+    }
+  }
 
   useEffect(() => {
     axios
@@ -16,7 +36,7 @@ export default function Characterselection() {
         headers: { Authorization: cookies.get("Mycookie") },
       })
       .then(function (response) {
-        console.log(response);
+        //console.log(response);
         setCharacters(response.data);
       })
       .catch(function (error) {
@@ -44,8 +64,8 @@ export default function Characterselection() {
                 setCharacterIndex(
                   (indexOfCharacterLeft = characters.length - 1)
                 );
-              console.log(indexOfCharacterLeft);
-              console.log(characters[characterIndex]);
+              //console.log(indexOfCharacterLeft);
+              //console.log(characters[characterIndex]);
             }}
           >
             <img
@@ -54,14 +74,16 @@ export default function Characterselection() {
               alt="arrow_left"
             />
           </button>
-          <button>
-            <Link className="link" to="/battlescreen">
-              <img
-                className="characterimage"
-                src={characters[characterIndex].image}
-                alt="character"
-              />
-            </Link>
+          <button
+            onClick={() => {
+              setRedirect(true);
+            }}
+          >
+            <img
+              className="characterimage"
+              src={characters[characterIndex].image}
+              alt="character"
+            />
           </button>
           <button
             onClick={() => {
@@ -69,8 +91,8 @@ export default function Characterselection() {
               if (indexOfCharacterRight < characters.length - 1)
                 setCharacterIndex(indexOfCharacterRight + 1);
               else setCharacterIndex((indexOfCharacterRight = 0));
-              console.log(indexOfCharacterRight);
-              console.log(characters[characterIndex]);
+              //console.log(indexOfCharacterRight);
+              //console.log(characters[characterIndex]);
             }}
           >
             <img
@@ -79,6 +101,7 @@ export default function Characterselection() {
               alt="arrow_right"
             />
           </button>
+          <div>{renderRedirect()}</div>
         </div>
       </div>
     );
