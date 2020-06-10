@@ -2,23 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import styles from "../styles.css";
+import "../styles.css";
 
 const cookies = new Cookies();
 
-/*function attackCharacter() {
-  setEnemyCharacter({...enemyCharacter, hit_points = hit_points - abilities[0].damage_hp})
-  setCharacter(...)
-  
-  };*/
-
 export default function Battlescreen() {
-  const [characters, setCharacters] = useState([]);
-  const [characterIndex, setCharacterIndex] = useState(0);
-  const [enemyCharacter, setEnemyCharacter] = useState();
   let location = useLocation();
-  let { playerCharacter } = location.state;
-  const [character, setCharacter] = useState(location.state.playerCharacter);
+  const [characters, setCharacters] = useState([]);
+  const [playerCharacter, setPlayerCharacter] = useState(
+    location.state.selectedCharacter
+  );
+  const [enemyCharacter, setEnemyCharacter] = useState();
+
   const [counter, setCounter] = useState(1);
   const [aiTurn, setAiTurn] = useState(false);
   const [playerTurn, setPlayerTurn] = useState(true);
@@ -29,12 +24,58 @@ export default function Battlescreen() {
       hit_points:
         enemyCharacter.hit_points - enemyCharacter.abilities[0].damage_hp,
     });
-    setCharacter({
-      ...character,
-      action_points: character.action_points - character.abilities[0].cost_ap,
+    setPlayerCharacter({
+      ...playerCharacter,
+      action_points:
+        playerCharacter.action_points - playerCharacter.abilities[0].cost_ap,
     });
     setAiTurn(true);
     setPlayerTurn(false);
+  }
+
+  function attackPlayer() {
+    setPlayerCharacter({
+      ...playerCharacter,
+      hit_points:
+        playerCharacter.hitpoints - playerCharacter.abilities[0].damage_hp,
+    });
+    setEnemyCharacter({
+      ...enemyCharacter,
+      action_points:
+        enemyCharacter.action_points - enemyCharacter.abilities[0].cost_ap,
+    });
+    setAiTurn(false);
+    setPlayerTurn(true);
+  }
+
+  function healPlayerCharacter() {
+    setPlayerCharacter({
+      ...playerCharacter,
+      hit_points:
+        playerCharacter.hitpoints + playerCharacter.abilities[1].damage_hp,
+    });
+    setPlayerCharacter({
+      ...playerCharacter,
+      action_points:
+        playerCharacter.action_points - playerCharacter.abilities[1].cost_ap,
+    });
+    setAiTurn(true);
+    setPlayerTurn(false);
+  }
+
+  function healEnemyCharacter() {
+    setEnemyCharacter({
+      ...enemyCharacter,
+      hit_points:
+        enemyCharacter.hitpoints + enemyCharacter.abilities[1].damage_hp,
+    });
+    setEnemyCharacter({
+      ...enemyCharacter,
+      action_points:
+        enemyCharacter.action_points - enemyCharacter.abilities[1].cost_ap,
+    });
+    setAiTurn(false);
+    setPlayerTurn(true);
   }
 
   useEffect(() => {
@@ -88,10 +129,10 @@ export default function Battlescreen() {
               <tbody>
                 <tr>
                   <td>
-                    <h2>HP: {character.hit_points}</h2>
+                    <h2>HP: {playerCharacter.hit_points}</h2>
                   </td>
                   <td>
-                    <h2>AP: {character.action_points}</h2>
+                    <h2>AP: {playerCharacter.action_points}</h2>
                   </td>
                 </tr>
               </tbody>
@@ -108,7 +149,7 @@ export default function Battlescreen() {
                   </button>
                 </td>
                 <td>
-                  <button>
+                  <button onClick={healPlayerCharacter}>
                     <h2>Heal</h2>
                   </button>
                 </td>
