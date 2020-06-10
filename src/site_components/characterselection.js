@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import styles from "../styles.css";
+import "../styles.css";
 
 const cookies = new Cookies();
 
@@ -23,7 +17,7 @@ export default function Characterselection() {
         <Redirect
           to={{
             pathname: "/battlescreen",
-            state: { playerCharacter: characters[characterIndex] },
+            state: { selectedCharacter: characters[characterIndex] },
           }}
         />
       );
