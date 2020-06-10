@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Form, Button } from "react-bootstrap";
 
 export default function Register() {
   const handleSubmit = (event) => {
@@ -25,28 +26,36 @@ export default function Register() {
 
   return (
     <div className="register">
-      <h3>Create a Profile</h3>
-      <form onSubmit={handleSubmit} action="/register" method="post">
-        <input
-          id="username"
-          type="text"
-          name="username"
-          placeholder="Enter a username"
-        />
-        <input
-          id="email"
-          type="text"
-          name="email"
-          placeholder="Enter an email address"
-        />
-        <input
-          id="password"
-          type="password"
-          name="password"
-          placeholder="Define a password"
-        />
-        <input type="submit" value="send" />
-      </form>
+      <h3 className="padding_element">Create a Profile</h3>
+      <Form onSubmit={handleSubmit} action="/register" method="post">
+        <Form.Group controlId="formGroupEmail">
+          <input
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Enter a username"
+          />
+        </Form.Group>
+        <Form.Group controlId="formGroupPassword">
+          <input
+            id="email"
+            type="text"
+            name="email"
+            placeholder="Enter an email address"
+          />
+        </Form.Group>
+        <Form.Group controlId="formGroupEmail">
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Define a password"
+          />
+        </Form.Group>
+        <Button variant="secondary" type="submit" value="send">
+          Send
+        </Button>
+      </Form>
     </div>
   );
 }

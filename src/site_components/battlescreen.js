@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { Button, Image } from "react-bootstrap";
 import "../styles.css";
 
 const cookies = new Cookies();
@@ -103,20 +104,34 @@ export default function Battlescreen() {
             src={enemyCharacter.image}
             alt="character"
           />
-          <div>
-            <table className="stats_container">
-              <tbody>
-                <tr>
-                  <td>
-                    <h2>HP: {enemyCharacter.hit_points}</h2>
-                  </td>
-                  <td>
-                    <h2>AP: {enemyCharacter.action_points}</h2>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table className="stats_container">
+            <tbody>
+              <tr>
+                <td>
+                  <Image
+                    className="ability_icons"
+                    src="heart.bmp"
+                    alt="heart"
+                    roundedCircle
+                  />
+                </td>
+                <td>
+                  <h2>HP: {enemyCharacter.hit_points}</h2>
+                </td>
+                <td>
+                  <Image
+                    className="ability_icons"
+                    src="fist.bmp"
+                    alt="fist"
+                    roundedCircle
+                  />
+                </td>
+                <td>
+                  <h2>AP: {enemyCharacter.action_points}</h2>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div id="charactertwo_container">
           <img
@@ -124,45 +139,59 @@ export default function Battlescreen() {
             src={playerCharacter.image}
             alt="character"
           />
-          <div>
-            <table className="stats_container">
-              <tbody>
-                <tr>
-                  <td>
-                    <h2>HP: {playerCharacter.hit_points}</h2>
-                  </td>
-                  <td>
-                    <h2>AP: {playerCharacter.action_points}</h2>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <table className="stats_container">
+            <tbody>
+              <tr>
+                <td>
+                  <Image
+                    className="ability_icons"
+                    src="heart.bmp"
+                    alt="heart"
+                    roundedCircle
+                  />
+                </td>
+                <td>
+                  <h2>HP: {playerCharacter.hit_points}</h2>
+                </td>
+                <td>
+                  <Image
+                    className="ability_icons"
+                    src="fist.bmp"
+                    alt="fist"
+                    roundedCircle
+                  />
+                </td>
+                <td>
+                  <h2>AP: {playerCharacter.action_points}</h2>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
         <div id="battlemenu_container">
           <table id="battlemenu_table">
             <tbody>
               <tr>
                 <td>
-                  <button onClick={attackAi}>
+                  <Button variant="danger" onClick={attackAi}>
                     <h2>Attack</h2>
-                  </button>
+                  </Button>
                 </td>
                 <td>
-                  <button onClick={healPlayerCharacter}>
+                  <Button variant="success" onClick={healPlayerCharacter}>
                     <h2>Heal</h2>
-                  </button>
-                </td>
-                {/* <td>
-                  <button>
-                    <h2>Special Ability 1</h2>
-                  </button>
+                  </Button>
                 </td>
                 <td>
-                  <button>
+                  <Button variant="light">
+                    <h2>Special Ability 1</h2>
+                  </Button>
+                </td>
+                <td>
+                  <Button variant="light">
                     <h2>Special Ability 2</h2>
-                  </button>
-                </td> */}
+                  </Button>
+                </td>
               </tr>
             </tbody>
           </table>

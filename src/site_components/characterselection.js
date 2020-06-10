@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { Button, Image } from "react-bootstrap";
 import "../styles.css";
 
 const cookies = new Cookies();
@@ -40,7 +41,7 @@ export default function Characterselection() {
   if (characters.length) {
     return (
       <div className="characterselection">
-        <h3>Choose your Character!</h3>
+        <h3 className="padding_element">Choose your Character!</h3>
         <p>
           Switch between Characters by clicking on the Arrows and start a Battle
           against the Computer by clicking on the Character Portrait!
@@ -49,7 +50,8 @@ export default function Characterselection() {
         <h4>{characters[characterIndex].name}</h4>
         <p>{characters[characterIndex].description}</p>
         <div className="imagecontainer">
-          <button
+          <Button
+            variant="light"
             onClick={() => {
               let indexOfCharacterLeft = characterIndex;
               if (indexOfCharacterLeft > 0)
@@ -62,13 +64,15 @@ export default function Characterselection() {
               //console.log(characters[characterIndex]);
             }}
           >
-            <img
+            <Image
               className="selectionarrows"
               src="arrow_left.bmp"
               alt="arrow_left"
+              roundedCircle
             />
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="dark"
             onClick={() => {
               setRedirect(true);
             }}
@@ -78,8 +82,9 @@ export default function Characterselection() {
               src={characters[characterIndex].image}
               alt="character"
             />
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="light"
             onClick={() => {
               let indexOfCharacterRight = characterIndex;
               if (indexOfCharacterRight < characters.length - 1)
@@ -89,12 +94,13 @@ export default function Characterselection() {
               //console.log(characters[characterIndex]);
             }}
           >
-            <img
+            <Image
               className="selectionarrows"
               src="arrow_right.bmp"
               alt="arrow_right"
+              roundedCircle
             />
-          </button>
+          </Button>
           <div>{renderRedirect()}</div>
         </div>
       </div>

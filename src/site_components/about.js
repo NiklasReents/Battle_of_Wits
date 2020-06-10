@@ -1,17 +1,19 @@
 import React from "react";
+import "../styles.css";
 
 export default function About() {
   return (
     <div className="about">
-      <h3>How to play Battle of Wits</h3>
+      <h3 className="padding_element">How to play Battle of Wits</h3>
+      <hr />
       <p>
         <h3>General Battle Flow</h3>
       </p>
-      <p>
+      <p align="justify">
         The game randomly decides which player gets to act in the first round.
         Each round is timed to 5 seconds and within each round, a player can use
         as many abilities as possible, as long as those abilities have charges
-        available (most abilities have only one charge per round and thus, can
+        available (most abilities have only one charge per round and thus can
         only be used once per round) and the player has enough Actionpoints
         (APs) at his or her disposal. A match ends when a player's Hitpoints
         (HPs) are reduced to 0.
@@ -19,7 +21,7 @@ export default function About() {
       <p>
         <h3>Actionpoints</h3>
       </p>
-      <p>
+      <p align="justify">
         Each round, a certain amount of Actionpoints (APs) is available to an
         active character (10 APs by default; certain abilities are capable of
         temporarily changing the amount of APs available to the player or
@@ -29,22 +31,22 @@ export default function About() {
       <p>
         <h3>Characters</h3>
       </p>
-      <p>
+      <p align="justify">
         <b>General properties:</b> By default, all characters share the
         following traits: <u>Hitpoints (HPs)</u>: 1000;{" "}
         <u>Actionpoints (APs)</u>: 10 per round; Basic <u>Attack</u> Ability
         (Cost: 2 APs): deal between 100-150 damage; can be used up to two times
         per round; Standard <u>Healing</u> Ability (Cost: 3 APs): heal up to 250
-        damage; can be used once per round;
+        damage; can be used once per round.
       </p>
       <p>
         <b>1. Name: Monopoly Man </b>
-        <p>
+        <p align="justify">
           <u>Short Gameplay Characterisation and Description</u>: A high
           risk-and-reward character whose money-based abilities are capable of
           dealing very high damage to his opponent - or himself!{" "}
         </p>
-        <p>
+        <p align="justify">
           "A snobbish, entitled and, above all, filthy rich real estate investor
           and casino gambler with a soft spot for golden cutlery. Honestly, a
           real twit! He wants other people to think that he is erudite and
@@ -57,7 +59,7 @@ export default function About() {
           you! Why did a twit such a him end up in "Battle of Wits"? Well, you
           couldn't image a better foil for the Bearded Socialist, or could you?"{" "}
         </p>
-        <p>
+        <p align="justify">
           <u>Special Ability 1</u> "Charity is Cheap" (Cost: 1-10 APs): Throw
           money at your opponent; you can determine how much APs you want to
           spend; the more APs you spend, the higher the damage (starting damage
@@ -67,22 +69,22 @@ export default function About() {
           each additional AP: + 5% chance) and your opponent might gain these
           additional APs in their following round to give you some payback!
         </p>
-        <p>
+        <p align="justify">
           <u>Special Ability 2</u> "Flip a Coin" (Cost: 6 APs): After clicking
           on the ability, a coin will be flipped, with three potential results:
           "head" (50% chance) deals 400 damage to your opponent, "tail" (30%)
           300 damage to yourself and "edge" (20%) does 0 damage to your
-          opponent;
+          opponent.
         </p>
       </p>
       <p>
         <b>2. Name: Bearded Socialist</b>
-        <p>
+        <p align="justify">
           <u>Short Gameplay Characterisation and Description</u>: A hardy and
           stubborn character with great defensive capabilities who can deflect
           damage back at his opponent!{" "}
         </p>
-        <p>
+        <p align="justify">
           "His quest to liberate the downtrodden workers of the world from their
           oppressive masters is a noble one, but the road to true justice and
           equality is paved with mountains of fiery and often excessively
@@ -97,14 +99,14 @@ export default function About() {
           name alone makes all the Monopoly men of this world shiver with fear
           and he moves on without fear, for he is on the right side of history!"
         </p>
-        <p>
+        <p align="justify">
           <u>Special Ability 1</u> "Power of the Collective" (Cost: 6 APs):
-          Workers of the world, unite! Together, we are strong! Significantly
-          increases your defensive capabilities for one round by reducing all
-          incoming damaging by 40% and providing a 20% chance of deflecting
-          damage back at your opponent;{" "}
+          Workers of the world, unite! Together, we are strong! Increase your
+          defensive capabilities for one round by reducing all incoming damaging
+          by 40% and providing a 20% chance of deflecting damage back at your
+          opponent.{" "}
         </p>
-        <p>
+        <p align="justify">
           <u>Special Ability 2</u> "Revenge of the Oppressed" (Cost: 6 APs):
           Strike back at the oppressors of the world with revolutionary fervour!
           The more damage you take, the stronger this ability gets. The damage
@@ -118,13 +120,13 @@ export default function About() {
       </p>
       <p>
         <b>3. Name: Philosopher King</b>
-        <p>
+        <p align="justify">
           <u>Short Gameplay Characterisation and Description</u>: Sophisticated
           character who deals mostly moderate damage but excels at trolling his
           opponents and throwing them off-balance with his refined oratory
           skills!
         </p>{" "}
-        <p>
+        <p align="justify">
           "What a royal smart-ass! Really, what a smug bastard! Yes, a real
           human gadfly seizing every opportunity to goad innocent people into
           presumably high-minded discussions, pestering them with tricky
@@ -136,7 +138,7 @@ export default function About() {
           person to talk to if you have a thing for perfect "shapes" and
           "forms"!"{" "}
         </p>
-        <p>
+        <p align="justify">
           <u>Special Ability 1</u> "Question Time" (Cost: 6 APs): Totally
           confound your opponent with your superior brainpower by perforating
           (!) them with piercing questions; This attack unleashes a shower of
@@ -148,7 +150,7 @@ export default function About() {
           your rambling train of thought and there is a chance of 25% that you
           gift your opponent an additional round!{" "}
         </p>
-        <p>
+        <p align="justify">
           <u>Special Ability 2</u> "Realm of Ideas" (Cost: 5 APs): Plunge your
           opponent into a state of utter confusion and metaphysical bewilderment
           by giving them a blindingly shimmering glimpse of the Realm of Ideas!

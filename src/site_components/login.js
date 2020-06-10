@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { Form, Button } from "react-bootstrap";
 
 const cookies = new Cookies();
 
@@ -26,22 +27,28 @@ export default function Login() {
   };
   return (
     <div className="login">
-      <h3>Login</h3>
-      <form onSubmit={handleLoginSubmit} action="/login" method="post">
-        <input
-          id="login_username"
-          type="text"
-          name="username"
-          placeholder="Enter your username"
-        />
-        <input
-          id="login_password"
-          type="password"
-          name="password"
-          placeholder="Enter your password"
-        />
-        <input type="submit" value="send" />
-      </form>
+      <h3 className="padding_element">Login</h3>
+      <Form onSubmit={handleLoginSubmit} action="/login" method="post">
+        <Form.Group controlId="formGroupEmail">
+          <input
+            id="login_username"
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+          />
+        </Form.Group>
+        <Form.Group controlId="formGroupPassword">
+          <input
+            id="login_password"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+          />
+        </Form.Group>
+        <Button variant="secondary" type="submit" value="send">
+          Send
+        </Button>
+      </Form>
     </div>
   );
 }
