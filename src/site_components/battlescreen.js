@@ -6,11 +6,35 @@ import styles from "../styles.css";
 
 const cookies = new Cookies();
 
+/*function attackCharacter() {
+  setEnemyCharacter({...enemyCharacter, hit_points = hit_points - abilities[0].damage_hp})
+  setCharacter(...)
+  
+  };*/
+
 export default function Battlescreen() {
   const [characters, setCharacters] = useState([]);
   const [characterIndex, setCharacterIndex] = useState(0);
+  const [enemyCharacter, setEnemyCharacter] = useState();
   let location = useLocation();
   let { playerCharacter } = location.state;
+  const [character, setCharacter] = useState(location.state.playerCharacter);
+  const [counter, setCounter] = useState(1);
+  const [aiTurn, setAiTurn] = useState(false);
+  const [playerTurn, setPlayerTurn] = useState(true);
+
+  function attackAi() {
+    setEnemyCharacter({
+      ...enemyCharacter,
+      hit_points: hit_points - abilities[0].damage_hp,
+    });
+    setCharacter({
+      ...character,
+      action_points: action_points - abilities[0].cost_ap,
+    });
+    setAiTurn(true);
+    setPlayerTurn(false);
+  }
 
   useEffect(() => {
     axios
@@ -20,20 +44,21 @@ export default function Battlescreen() {
       .then((response) => {
         //console.log(response);
         setCharacters(response.data);
+        setEnemyCharacter(
+          response.data[Math.floor(Math.random() * response.data.length)]
+        );
       })
       .catch((error) => {
         window.location.href = "/login";
       });
   }, []);
-  if (characters.length) {
+  if (characters.length && enemyCharacter) {
     return (
       <div className="battlebackground">
         <div id="characterone_container">
           <img
             className="characterimage"
-            src={
-              characters[Math.floor(Math.random() * characters.length)].image
-            }
+            src={enemyCharacter.image}
             alt="character"
           />
           <div>
@@ -41,24 +66,10 @@ export default function Battlescreen() {
               <tbody>
                 <tr>
                   <td>
-                    <h2>
-                      HP:{" "}
-                      {
-                        characters[
-                          Math.floor(Math.random() * characters.length)
-                        ].hit_points
-                      }
-                    </h2>
+                    <h2>HP: {enemyCharacter.hit_points}</h2>
                   </td>
                   <td>
-                    <h2>
-                      AP:{" "}
-                      {
-                        characters[
-                          Math.floor(Math.random() * characters.length)
-                        ].action_points
-                      }
-                    </h2>
+                    <h2>AP: {enemyCharacter.action_points}</h2>
                   </td>
                 </tr>
               </tbody>
