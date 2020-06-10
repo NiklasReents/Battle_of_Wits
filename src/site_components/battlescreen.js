@@ -26,11 +26,12 @@ export default function Battlescreen() {
   function attackAi() {
     setEnemyCharacter({
       ...enemyCharacter,
-      hit_points: hit_points - abilities[0].damage_hp,
+      hit_points:
+        enemyCharacter.hit_points - enemyCharacter.abilities[0].damage_hp,
     });
     setCharacter({
       ...character,
-      action_points: action_points - abilities[0].cost_ap,
+      action_points: character.action_points - character.abilities[0].cost_ap,
     });
     setAiTurn(true);
     setPlayerTurn(false);
@@ -87,10 +88,10 @@ export default function Battlescreen() {
               <tbody>
                 <tr>
                   <td>
-                    <h2>HP: {playerCharacter.hit_points}</h2>
+                    <h2>HP: {character.hit_points}</h2>
                   </td>
                   <td>
-                    <h2>AP: {playerCharacter.action_points}</h2>
+                    <h2>AP: {character.action_points}</h2>
                   </td>
                 </tr>
               </tbody>
@@ -102,42 +103,16 @@ export default function Battlescreen() {
             <tbody>
               <tr>
                 <td>
-                  <button
-                  /*onClick={() => {
-                      setCharacters(
-                        (characters[0].hit_points =
-                          characters[0].hit_points - 150),
-                        setCharacters(
-                          (characters[0].action_points =
-                            characters[0].action_points - 2)
-                        )
-                      );
-                      //console.log(characters[0].hit_points);
-                      //console.log(characters[0].action_points);
-                    }}*/
-                  >
+                  <button onClick={attackAi}>
                     <h2>Attack</h2>
                   </button>
                 </td>
                 <td>
-                  <button
-                  /*onClick={() => {
-                      setCharacters(
-                        (characters[0].hit_points =
-                          characters[0].hit_points + 250),
-                        setCharacters(
-                          (characters[0].action_points =
-                            characters[0].action_points - 3)
-                        )
-                      );
-                      //console.log(characters[0].hit_points);
-                      //console.log(characters[0].action_points);
-                    }}*/
-                  >
+                  <button>
                     <h2>Heal</h2>
                   </button>
                 </td>
-                <td>
+                {/* <td>
                   <button>
                     <h2>Special Ability 1</h2>
                   </button>
@@ -146,7 +121,7 @@ export default function Battlescreen() {
                   <button>
                     <h2>Special Ability 2</h2>
                   </button>
-                </td>
+                </td> */}
               </tr>
             </tbody>
           </table>
