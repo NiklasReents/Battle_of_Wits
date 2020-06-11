@@ -1,5 +1,9 @@
-.navbar_buttons {
-  margin: 2px;
+#backgroundimage {
+  background-image: url("https://media.fshoq.com/images/232/abandoned-factory-in-hanover-232-medium.jpg");
+  background-color: rgb(80, 80, 90);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 15px;
 }
 
 #characterone_container {
@@ -14,6 +18,22 @@
   align-items: flex-start;
 }
 
+#battlemenu_container {
+  display: flex;
+  justify-content: center;
+}
+
+#battlemenu_table {
+  border: 5px solid black;
+  margin: 30px;
+  padding: 30px;
+  background-color: black;
+}
+
+.navbar_buttons {
+  margin: 2px;
+}
+
 .padding_element {
   padding: 15px;
   margin: 15px;
@@ -24,61 +44,44 @@
   margin-bottom: 15px;
 }
 
-.stats_container {
-  display: flex;
-  justify-content: center;
-  border: 2px solid black;
-  border-radius: 15px;
-  padding: 20px;
-  background-color: rgb(80, 80, 90);
-  box-shadow: 3px 3px black;
-}
-
-#battlemenu_container {
-  display: flex;
-  justify-content: center;
-}
-
-#battlemenu_table {
-  border: 2px solid black;
-  border-radius: 15px;
-  margin: 30px;
-  padding: 30px;
-  background-color: rgb(80, 80, 90);
-  box-shadow: 3px 3px black;
-}
-
-.battlebackground {
-  background-image: url("https://media.fshoq.com/images/232/abandoned-factory-in-hanover-232-medium.jpg");
-  background-color: rgb(80, 80, 90);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 .imagecontainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.characterimage {
-  border: 3px solid black;
-  box-shadow: 3px 3px black;
-  border-radius: 15px;
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: 500px;
-}
-
 .selectionarrows {
-  max-width: 100%;
   height: auto;
   width: auto\9;
+  max-width: 100%;
+}
+
+.characterimage {
+  display: block;
+  border: 3px solid black;
+  border-radius: 15px;
+  box-shadow: 3px 3px black;
+  max-height: 100%;
+  max-width: 100%;
+  height: 500px;
+  width: auto;
+}
+
+.stats_container {
+  display: flex;
+  justify-content: center;
+  border: 2px solid black;
+  border-radius: 15px;
+  box-shadow: 3px 3px black;
+  padding: 20px;
+  background-color: rgb(80, 80, 90);
 }
 
 .ability_icons {
   height: 50px;
   width: auto\9;
+}
+
+.battlemenu_buttons {
+  border: 15px solid black;
 }

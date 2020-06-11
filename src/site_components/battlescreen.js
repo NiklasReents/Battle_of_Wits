@@ -4,6 +4,7 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { Button, Image } from "react-bootstrap";
 import "../styles.css";
+import "../animations.css";
 
 const cookies = new Cookies();
 
@@ -30,15 +31,20 @@ export default function Battlescreen() {
       action_points:
         playerCharacter.action_points - playerCharacter.abilities[0].cost_ap,
     });
+    /*const clickEvent = document.getElementsByClassName("");
+    clickEvent.classList.toggle("");*/
     setAiTurn(true);
     setPlayerTurn(false);
+    if (aiTurn === true) {
+      attackPlayer();
+    }
   }
 
   function attackPlayer() {
     setPlayerCharacter({
       ...playerCharacter,
       hit_points:
-        playerCharacter.hitpoints - playerCharacter.abilities[0].damage_hp,
+        playerCharacter.hit_points - playerCharacter.abilities[0].damage_hp,
     });
     setEnemyCharacter({
       ...enemyCharacter,
@@ -53,7 +59,7 @@ export default function Battlescreen() {
     setPlayerCharacter({
       ...playerCharacter,
       hit_points:
-        playerCharacter.hitpoints + playerCharacter.abilities[1].damage_hp,
+        playerCharacter.hit_points + playerCharacter.abilities[1].damage_hp,
     });
     setPlayerCharacter({
       ...playerCharacter,
@@ -97,13 +103,19 @@ export default function Battlescreen() {
   }, []);
   if (characters.length && enemyCharacter) {
     return (
-      <div className="battlebackground">
+      <div id="backgroundimage">
         <div id="characterone_container">
-          <img
-            className="characterimage"
-            src={enemyCharacter.image}
-            alt="character"
-          />
+          <div className="flip-card">
+            <div className="flip-card-front">
+              <div className="flip-card-inner">
+                <img
+                  className="characterimage"
+                  src={enemyCharacter.image}
+                  alt="character"
+                />
+              </div>
+            </div>
+          </div>
           <table className="stats_container">
             <tbody>
               <tr>
@@ -134,11 +146,17 @@ export default function Battlescreen() {
           </table>
         </div>
         <div id="charactertwo_container">
-          <img
-            className="characterimage"
-            src={playerCharacter.image}
-            alt="character"
-          />
+          <div className="flip-card">
+            <div className="flip-card-front">
+              <div className="flip-card-inner">
+                <img
+                  className="characterimage"
+                  src={playerCharacter.image}
+                  alt="character"
+                />
+              </div>
+            </div>
+          </div>
           <table className="stats_container">
             <tbody>
               <tr>
@@ -152,6 +170,7 @@ export default function Battlescreen() {
                 </td>
                 <td>
                   <h2>HP: {playerCharacter.hit_points}</h2>
+                  {console.log(playerCharacter.hit_points)}
                 </td>
                 <td>
                   <Image

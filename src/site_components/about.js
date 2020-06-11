@@ -6,9 +6,9 @@ export default function About() {
     <div className="about">
       <h3 className="padding_element">How to play Battle of Wits</h3>
       <hr />
-      <p>
+      <div>
         <h3>General Battle Flow</h3>
-      </p>
+      </div>
       <p align="justify">
         The game randomly decides which player gets to act in the first round.
         Each round is timed to 5 seconds and within each round, a player can use
@@ -18,9 +18,9 @@ export default function About() {
         (APs) at his or her disposal. A match ends when a player's Hitpoints
         (HPs) are reduced to 0.
       </p>
-      <p>
+      <div>
         <h3>Actionpoints</h3>
-      </p>
+      </div>
       <p align="justify">
         Each round, a certain amount of Actionpoints (APs) is available to an
         active character (10 APs by default; certain abilities are capable of
@@ -28,9 +28,9 @@ export default function About() {
         opponent character). APs are required to use abilities, all of which
         have different AP costs.{" "}
       </p>
-      <p>
+      <div>
         <h3>Characters</h3>
-      </p>
+      </div>
       <p align="justify">
         <b>General properties:</b> By default, all characters share the
         following traits: <u>Hitpoints (HPs)</u>: 1000;{" "}
@@ -39,7 +39,7 @@ export default function About() {
         per round; Standard <u>Healing</u> Ability (Cost: 3 APs): heal up to 250
         damage; can be used once per round.
       </p>
-      <p>
+      <div>
         <b>1. Name: Monopoly Man </b>
         <p align="justify">
           <u>Short Gameplay Characterisation and Description</u>: A high
@@ -76,8 +76,8 @@ export default function About() {
           300 damage to yourself and "edge" (20%) does 0 damage to your
           opponent.
         </p>
-      </p>
-      <p>
+      </div>
+      <div>
         <b>2. Name: Bearded Socialist</b>
         <p align="justify">
           <u>Short Gameplay Characterisation and Description</u>: A hardy and
@@ -117,8 +117,8 @@ export default function About() {
           damage! As a set-off, in the round after unleashing this ability, you
           will only have 5 seconds to choose your next moves.
         </p>
-      </p>
-      <p>
+      </div>
+      <div>
         <b>3. Name: Philosopher King</b>
         <p align="justify">
           <u>Short Gameplay Characterisation and Description</u>: Sophisticated
@@ -159,7 +159,7 @@ export default function About() {
           their attacks will have a 25% chance of missing, effectively dealing
           no damage.
         </p>
-      </p>
+      </div>
     </div>
   );
 }
