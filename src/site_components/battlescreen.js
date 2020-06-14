@@ -51,6 +51,12 @@ export default function Battlescreen() {
       action_points:
         enemyCharacter.action_points - enemyCharacter.abilities[0].cost_ap,
     });
+    if (
+      enemyCharacter.hit_points <= (enemyCharacter.hit_points / 100) * 30 &&
+      aiTurn === true
+    ) {
+      healEnemyCharacter();
+    }
     setAiTurn(false);
     setPlayerTurn(true);
   }
@@ -60,9 +66,6 @@ export default function Battlescreen() {
       ...playerCharacter,
       hit_points:
         playerCharacter.hit_points + playerCharacter.abilities[1].damage_hp,
-    });
-    setPlayerCharacter({
-      ...playerCharacter,
       action_points:
         playerCharacter.action_points - playerCharacter.abilities[1].cost_ap,
     });
@@ -74,10 +77,7 @@ export default function Battlescreen() {
     setEnemyCharacter({
       ...enemyCharacter,
       hit_points:
-        enemyCharacter.hitpoints + enemyCharacter.abilities[1].damage_hp,
-    });
-    setEnemyCharacter({
-      ...enemyCharacter,
+        enemyCharacter.hit_points + enemyCharacter.abilities[1].damage_hp,
       action_points:
         enemyCharacter.action_points - enemyCharacter.abilities[1].cost_ap,
     });
