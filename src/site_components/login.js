@@ -11,19 +11,27 @@ export default function Login() {
     const login_username = document.getElementById("login_username").value;
     const login_password = document.getElementById("login_password").value;
 
-    axios
-      .post("http://localhost:8000/login", {
-        login_username: login_username,
-        login_password: login_password,
-      })
-      .then(function (response) {
-        cookies.set("Mycookie", response.data);
-        console.log(cookies.get("Mycookie", response.data));
-        window.location.href = "/home";
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (login_username < "   " || login_password < "   ") {
+      document.getElementById("login_username").placeholder =
+        "Enter a valid username!";
+      document.getElementById("login_password").placeholder =
+        "Enter a valid password!";
+      alert("Form is empty!");
+    } else {
+      axios
+        .post("http://localhost:8000/login", {
+          login_username: login_username,
+          login_password: login_password,
+        })
+        .then(function (response) {
+          cookies.set("Mycookie", response.data);
+          console.log(cookies.get("Mycookie", response.data));
+          window.location.href = "/home";
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
   return (
     <div className="login">

@@ -9,19 +9,28 @@ export default function Register() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
-    axios
-      .post("http://localhost:8000/register", {
-        username: username,
-        email: email,
-        password: password,
-      })
-      .then(function (response) {
-        console.log(response);
-        window.location.href = "/login";
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    if (username < "   " || email < "   " || password < "   ") {
+      document.getElementById("username").placeholder =
+        "Enter a valid username!";
+      document.getElementById("email").placeholder = "Enter a valid email!";
+      document.getElementById("password").placeholder =
+        "Enter a valid password!";
+      alert("Form is empty! Use at least three characters per field.");
+    } else {
+      axios
+        .post("http://localhost:8000/register", {
+          username: username,
+          email: email,
+          password: password,
+        })
+        .then(function (response) {
+          console.log(response);
+          window.location.href = "/login";
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
 
   return (
