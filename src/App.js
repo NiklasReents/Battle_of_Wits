@@ -68,7 +68,16 @@ export default function App() {
             </Route>
           </Switch>
           <div>
-            <Link className="link" to="/about">
+            <Link
+              className="link"
+              to="/about"
+              onClick={() => {
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                });
+              }}
+            >
               <Button variant="secondary" className="padding_element">
                 About
               </Button>
