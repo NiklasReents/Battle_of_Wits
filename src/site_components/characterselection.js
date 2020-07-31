@@ -29,12 +29,13 @@ export default function Characterselection() {
     axios
       .get("http://localhost:8000/login/characterselection", {
         headers: { Authorization: cookies.get("Mycookie") },
+        //for the time being, localhost serves as a placeholder
       })
       .then(function (response) {
-        //console.log(response);
         setCharacters(response.data);
       })
       .catch(function (error) {
+        console.log(error);
         window.location.href = "/login";
       });
   }, []);
@@ -60,8 +61,6 @@ export default function Characterselection() {
                 setCharacterIndex(
                   (indexOfCharacterLeft = characters.length - 1)
                 );
-              //console.log(indexOfCharacterLeft);
-              //console.log(characters[characterIndex]);
             }}
           >
             <Image
@@ -90,8 +89,6 @@ export default function Characterselection() {
               if (indexOfCharacterRight < characters.length - 1)
                 setCharacterIndex(indexOfCharacterRight + 1);
               else setCharacterIndex((indexOfCharacterRight = 0));
-              //console.log(indexOfCharacterRight);
-              //console.log(characters[characterIndex]);
             }}
           >
             <Image

@@ -11,7 +11,7 @@ export default function Login() {
     const login_username = document.getElementById("login_username").value;
     const login_password = document.getElementById("login_password").value;
 
-    if (login_username < "   " || login_password < "   ") {
+    if (login_username < "   " && login_password < "   ") {
       document.getElementById("login_username").placeholder =
         "Enter a valid username!";
       document.getElementById("login_password").placeholder =
@@ -24,8 +24,8 @@ export default function Login() {
           login_password: login_password,
         })
         .then(function (response) {
-          cookies.set("Mycookie", response.data);
-          console.log(cookies.get("Mycookie", response.data));
+          const loginData = response.data;
+          cookies.set("Mycookie", loginData);
           window.location.href = "/home";
         })
         .catch(function (error) {
@@ -33,30 +33,46 @@ export default function Login() {
         });
     }
   };
-  return (
-    <div className="login">
-      <h3 className="padding_element">Login</h3>
-      <Form onSubmit={handleLoginSubmit} action="/login" method="post">
-        <Form.Group controlId="formGroupEmail">
-          <input
-            id="login_username"
-            type="text"
-            name="username"
-            placeholder="Enter your username"
-          />
-        </Form.Group>
-        <Form.Group controlId="formGroupPassword">
-          <input
-            id="login_password"
-            type="password"
-            name="password"
-            placeholder="Enter your password"
-          />
-        </Form.Group>
-        <Button variant="secondary" type="submit" value="send">
-          Send
-        </Button>
-      </Form>
-    </div>
-  );
+  /*I need to figure out how to properly change the login form to a logout button 
+  and destroy the jwt-session on click*/
+  cookies.get("Mycookie");
+  if (cookies === "Mycookie") {
+    return (
+      <Button
+        onClick={cookies.remove("MyCookie")}
+        variant="secondary"
+        type="submit"
+        value="send"
+      >
+        Logout
+      </Button>
+    );
+  } else {
+    return (
+      <div className="login">
+        <h3 className="padding_element">Login</h3>
+        <Form onSubmit={handleLoginSubmit} action="/login" method="post">
+          <Form.Group controlId="formGroupEmail">
+            <input
+              id="login_username"
+              type="text"
+              name="username"
+              placeholder="Enter your username"
+            />
+          </Form.Group>
+          <Form.Group controlId="formGroupPassword">
+            <input
+              id="login_password"
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+            />
+          </Form.Group>
+          <Button variant="secondary" type="submit" value="send">
+            Send
+          </Button>
+        </Form>
+      </div>
+    );
+  }
 }

@@ -20,6 +20,9 @@ export default function Battlescreen() {
   const [aiTurn, setAiTurn] = useState(false);
   const [playerTurn, setPlayerTurn] = useState(true);
 
+  /*the functions defined below are experimental and merely serve the purpose 
+  of making it possible for both the player and computer to deal and receive/heal damage*/
+
   function attackAi() {
     setEnemyCharacter({
       ...enemyCharacter,
@@ -89,19 +92,21 @@ export default function Battlescreen() {
     axios
       .get("http://localhost:8000/login/characterselection", {
         headers: { Authorization: cookies.get("Mycookie") },
+        //for the time being, localhost serves as a placeholder
       })
       .then((response) => {
-        //console.log(response);
         setCharacters(response.data);
         setEnemyCharacter(
           response.data[Math.floor(Math.random() * response.data.length)]
         );
       })
       .catch((error) => {
+        console.log(error);
         window.location.href = "/login";
       });
   }, []);
   if (characters.length && enemyCharacter) {
+    //the viewport needs size adjustments
     return (
       <div id="backgroundimage">
         <div id="characterone_container">

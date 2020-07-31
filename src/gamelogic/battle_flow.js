@@ -1,5 +1,1 @@
-import React, { useState, useEffect } from "react";
-
-export default function Battle_Flow() {
-  return <div></div>;
-}
+//this file will contain general battle scripts that define the overall match flow

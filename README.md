@@ -2,6 +2,10 @@
 
 From the standpoint of technical (and, to a lesser degree, conceptual) development, this little React JS-based browser game is still in its infancy: most of its features are either experimental or not yet implemented - as of yet, it can't be played in the proper sense (what you see in the game description below gives you a glimpse of what this game is supposed to look like in its fully playable state). Regardless of its current state, it is a fun, challenging and multifaceted project to work on which I will definitely be upgrading in the future!
 
+Mock login data:
+username: Hans
+password: Feierabend
+
 ## How to play Battle of Wits
 
 General Battle Flow
