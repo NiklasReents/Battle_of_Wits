@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "universal-cookie";
 import { Form, Button } from "react-bootstrap";
 
-const cookies = new Cookies();
+let cookies = new Cookies();
 
 export default function Login() {
   const handleLoginSubmit = (event) => {
@@ -33,46 +33,31 @@ export default function Login() {
         });
     }
   };
-  /*I need to figure out how to properly change the login form to a logout button 
-  and destroy the jwt-session on click*/
-  cookies.get("Mycookie");
-  if (cookies === "Mycookie") {
-    return (
-      <Button
-        onClick={cookies.remove("MyCookie")}
-        variant="secondary"
-        type="submit"
-        value="send"
-      >
-        Logout
-      </Button>
-    );
-  } else {
-    return (
-      <div className="login">
-        <h3 className="padding_element">Login</h3>
-        <Form onSubmit={handleLoginSubmit} action="/login" method="post">
-          <Form.Group controlId="formGroupEmail">
-            <input
-              id="login_username"
-              type="text"
-              name="username"
-              placeholder="Enter your username"
-            />
-          </Form.Group>
-          <Form.Group controlId="formGroupPassword">
-            <input
-              id="login_password"
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-            />
-          </Form.Group>
-          <Button variant="secondary" type="submit" value="send">
-            Send
-          </Button>
-        </Form>
-      </div>
-    );
-  }
+  return (
+    <div className="login">
+      <h3 className="padding_element">Login</h3>
+      <Form onSubmit={handleLoginSubmit} action="/login" method="post">
+        <Form.Group controlId="formGroupEmail">
+          <input
+            id="login_username"
+            type="text"
+            name="username"
+            placeholder="Enter your username"
+          />
+        </Form.Group>
+        <Form.Group controlId="formGroupPassword">
+          <input
+            id="login_password"
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+          />
+        </Form.Group>
+        <Button variant="secondary" type="submit" value="send">
+          Send
+        </Button>
+      </Form>
+    </div>
+  );
 }
+export { cookies };
